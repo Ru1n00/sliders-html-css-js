@@ -228,6 +228,7 @@ header nav {
     }
 }
 
+/* next */
 .next .item.other_1 {
     z-index: 1;
 }
@@ -258,4 +259,34 @@ header nav {
 .next .item.other_2 .image {
     z-index: 3;
     --transform-from: calc(var(--w-image) * 2);
+}
+
+/* prev */
+.prev .list .item .image img,
+.prev .list .item .image figcaption {
+    animation: effectPrev .5s ease-in-out 1 forwards;
+}
+
+@keyframes effectPrev {
+    0% {
+        transform: translateX(calc(var(--transform-from)));
+    }
+    100% {
+        transform: translateX(calc(var(--transform-from) + var(--w-image)));
+    }
+}
+.prev .item.active .image {
+    --transform-from: calc(var(--w-image) * -1);    
+    overflow: hidden;
+}
+.prev .item.other_1 .image {
+    z-index: 3;
+    --transform-from: 0px;
+}
+.prev .item.other_2 .image {
+    z-index: 3;
+    --transform-from: var(--w-image);
+}
+.prev .item.other_2 .main-content {
+    opacity: 0;
 }
